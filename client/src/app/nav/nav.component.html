@@ -6,7 +6,7 @@
     </button> TODO Not doing as part of class -->
     <!-- <div class="collapse navbar-collapse" id="navbarCollapse"> TODO. make site responsive-->
       <ul class="navbar-nav mr-auto" *ngIf="accountService.currentUser$ | async">
-        <li class="nav-item ">
+        <li class="nav-item">
           <a class="nav-link" href="#">Matches </a>
         </li>
         <li class="nav-item">
@@ -17,7 +17,7 @@
         </li>
       </ul>
       <div class="dropdown" *ngIf="accountService.currentUser$ | async" dropdown>
-          <a href="" class="dropdown-toggle text-light" dropdownToggle>Welcome user</a>
+          <a class="dropdown-toggle text-light" dropdownToggle>Welcome user</a>
           <div class="dropdown-menu mt-3" *dropdownMenu>
               <a class="dropdown-item">Edit Profile</a>
               <div class="dropdown-divider"></div>
