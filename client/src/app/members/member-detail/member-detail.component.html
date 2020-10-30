@@ -40,9 +40,8 @@
     </tab>
     <tab heading='Interests'>
       <h4>Interests</h4>
-      <p>{{member.interests}}</p>
-      <h4>Photos</h4>
-      <p>Photos will go here</p>
+      <ngx-gallery [options]="galleryOptions" [images]="galleryImages"
+        style="display: inline-block; margin-bottom: 20px;"></ngx-gallery>
     </tab>
     <tab heading='Messages'>
       <h4>Messages</h4>
