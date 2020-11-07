@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from '../_services/account.service';
 
@@ -10,21 +11,21 @@ import { AccountService } from '../_services/account.service';
 })
 export class RegisterComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter();
-  model: any = {};
   registerForm: FormGroup;
   maxDate: Date;
+  validationErrors: string[] = [];
   constructor(private accoutService: AccountService, private toastr: ToastrService,
-              private fb: FormBuilder) { }
+              private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.initializeForm();
     this.maxDate = new Date();
-    this.maxDate.setFullYear(this.maxDate.getFullYear() -18);
+    this.maxDate.setFullYear(this.maxDate.getFullYear() - 18);
   }
 
   initializeForm() {
     this.registerForm = this.fb.group({
-      gender: ['male'],
+      gender: ['female'],
       username: ['', [Validators.required]],
       knownAs: ['', [Validators.required]],
       dateOfBirth: ['', [Validators.required]],
@@ -40,18 +41,15 @@ export class RegisterComponent implements OnInit {
     return (control: AbstractControl) => {
       return control?.value === control?.parent?.controls[matchTo].value
         ? null : {isMatching: true};
-    }
+    };
   }
 
   register() {
-    console.log(this.registerForm.value);
-    // this.accoutService.register(this.model).subscribe(response => {
-    //   console.log(response);
-    //   this.cancel();
-    // }, error => {
-    //   console.log(error);
-    //   this.toastr.error(error.error);
-    // });
+    this.accoutService.register(this.registerForm.value).subscribe(response => {
+      this.router.navigateByUrl('/members');
+    }, error => {
+      this.validationErrors = error;
+    });
   }
 
   cancel() {
