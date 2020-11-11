@@ -8,11 +8,13 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { FileUploadModule } from 'ng2-file-upload';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
+    ButtonsModule.forRoot(),
     BsDropdownModule.forRoot(),
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
@@ -25,6 +27,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     PaginationModule.forRoot()
   ],
   exports: [
+    ButtonsModule,
     BsDropdownModule,
     BsDatepickerModule,
     ToastrModule,
