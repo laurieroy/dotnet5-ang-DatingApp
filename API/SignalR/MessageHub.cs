@@ -51,7 +51,7 @@ namespace API.SignalR
       var recipient = await _userRepository.GetUserByUsernameAsync(
           createMessageDto.RecipientUsername);
 
-      if (recipient == null)  throw new HubException("User not found")
+      if (recipient == null)  throw new HubException("User not found");
 
       var message = new Message
       {
@@ -66,7 +66,7 @@ namespace API.SignalR
 
       if (await _messageRepository.SaveAllAsync()) {
           var group = GetGroupName(sender.UserName, recipient.UserName);
-          await Clients.Group(group).SendAsync("NewMessage", _mapper.Map<MessageDto>(message))
+          await Clients.Group(group).SendAsync("NewMessage", _mapper.Map<MessageDto>(message));
       }
     }
     private string GetGroupName(string caller, string other)
