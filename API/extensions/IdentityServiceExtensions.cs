@@ -28,15 +28,14 @@ namespace API.extensions
             services.AddAuthentication (JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer (options =>
                 {
-                    options.TokenValidationParameters =
-                    new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                    options.TokenValidationParameters = new TokenValidationParameters
                     {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey (Encoding.UTF8
-                        .GetBytes (config["TokenKey"])),
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
-                        };
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey (Encoding.UTF8
+                            .GetBytes (config["TokenKey"])),
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                    };
 
                     options.Events = new JwtBearerEvents
                     {
@@ -48,10 +47,11 @@ namespace API.extensions
                             var path = context.HttpContext.Request.Path;
 
                             if (!string.IsNullOrEmpty (accessToken) &&
-                                path.StartsWithSegments ("hubs/presence"))
+                                path.StartsWithSegments ("/hubs"))
                             {
                                 context.Token = accessToken;
                             }
+                            
                             return Task.CompletedTask;
                         }
                     };
