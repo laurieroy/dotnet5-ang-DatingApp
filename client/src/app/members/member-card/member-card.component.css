@@ -6,7 +6,7 @@
 }
 
 .card img {
-  transform: scale(1.0, 1.);
+  transform: scale(1, 1);
   transition-duration: 500ms;
   transition-timing-function: ease-out;
 }
@@ -36,8 +36,12 @@
 }
 
 @keyframes fa-blink {
-  0% {opacity: 1;}
-  100% {opacity: 0.4;}
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.4;
+  }
 }
 
 .is-online {
