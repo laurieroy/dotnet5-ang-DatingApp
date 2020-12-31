@@ -1,4 +1,4 @@
-# [Dating App](https://datingapplaurie.herokuapp.com/) **work-in-progress** 
+# [Dating App](https://datingapplaurie.herokuapp.com/)
 [demo](https://datingapplaurie.herokuapp.com/)
 ## This application allows users to create a profile, add photos, do simple searches and message other users. It was built on ASP.NET core and Angular 10. Created following tutorial from Neil Cummings, TryCatchLearn.  
 I originally started this using .NET core 3.1/Angular 8, but found I did not have enough Angular knowledge, so put it on pause, and learned Angular in more depth. When I came back to this project, it had been updated to .NET core, so I started it over. 
